@@ -6,7 +6,7 @@ colors:
   # distinct from one another when using "track_id" or colormap name.
   cmap: 22
   team:  # colors can be selected by RGB or null
-    no_team: null
+    no_team: [128, 128, 128]
     prediction:
       left: [ 0, 0, 255 ]
       right: [ 255, 0, 0 ]

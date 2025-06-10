@@ -38,3 +38,9 @@ dev = ["ipykernel==6.29.4"]
 
 [tool.uv.sources]
 tracklab-calibration = { path = "plugins/calibration", editable = true }
+tracklab = { path = "../tracklab" }
+
+[tool.uv]
+override-dependencies = [
+    "opencv-python",
+]

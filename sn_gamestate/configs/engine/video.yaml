@@ -1,0 +1,10 @@
+_target_: tracklab.engine.VideoOnlineTrackingEngine
+
+filename: "/path/to/video.mp4"
+target_fps: 2 # Process every frame (adjust based on your needs)
+num_workers: ${num_cores}
+callbacks:
+  progress:
+    _target_: tracklab.callbacks.Progressbar
+    use_rich: ${use_rich}
+  vis: ${visualization}
