@@ -44,7 +44,7 @@ Not sure how to do this with `uv` yet....
 uv sync --frozen --no-install-package opencv-python-headless
 uv run --reinstall-package opencv-python
 uv run mim install mmcv==2.0.1
-uv run tracklab -cn soccernet
+uv add ../tracklab && uv run tracklab -cn soccernet_online
 ```
 
 ### 
