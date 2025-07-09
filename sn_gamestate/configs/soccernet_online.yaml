@@ -6,7 +6,7 @@
 # Detailed configs for each default component below are located in "sn-gamestate/sn-gamestate/configs" and "tracklab/tracklab/configs"
 # Define here which implementation (yolov8, oc_sort, ..) to use for each generic (detection, tracking, ...) component.
 defaults:
-  - dataset: local_video
+  - dataset: youtube
   - eval: gs_hota
   - engine: video
   - visualization: gamestate # Save tracking results as a .mp4 video in the run directory specified below (sn-gamestate/outputs/...)
@@ -22,10 +22,19 @@ defaults:
   # - modules/team_side: mean_position
   # - modules/tracklet_agg: voting_role_jn
 
-  # - modules/pitch : nbjw_calib
-  # - modules/calibration: nbjw_calib
-  - modules/pitch: tvcalib
-  - modules/calibration: tvcalib
+
+  # --- OK PERFORMANCE
+  - modules/pitch : nbjw_calib
+  - modules/calibration: nbjw_calib
+
+  # --- ABOUT THE SAME WITH nbjw_calib
+  # - modules/pitch: pnlcalib
+  # - modules/calibration: pnlcalib
+
+  # --- SLOW
+  # - modules/pitch: tvcalib
+  # - modules/calibration: tvcalib
+
   - _self_
 
 # Pipeline definition :
@@ -52,7 +61,7 @@ data_dir: "${project_dir}/data"
 model_dir: "${project_dir}/pretrained_models"
 
 # Machine configuration
-num_cores: 4
+num_cores: 6
 use_wandb: False
 use_rich: True
 
@@ -71,11 +80,11 @@ eval_tracking: True
 print_config: False
 
 dataset:
-  video_path: "/home/ptgamr/work/sportcontract/vision/soccernet/sn-gamestate/data/bayerndortmund.mp4"
+  video_path: "/home/ptgamr/work/sportcontract/vision/soccernet/sn-gamestate/data/001_Recorded clip.mp4"
 
 engine:
-  filename: "/home/ptgamr/work/sportcontract/vision/soccernet/sn-gamestate/data/bayerndortmund.mp4"
-  target_fps: 2 # Process every other frame for better performance
+  filename: "/home/ptgamr/work/sportcontract/vision/soccernet/sn-gamestate/data/001_Recorded clip.mp4"
+  target_fps: 10 # Process every other frame for better performance
 
 # # Dataset
 # dataset:
