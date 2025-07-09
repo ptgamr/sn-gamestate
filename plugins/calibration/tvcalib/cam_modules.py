@@ -1,6 +1,6 @@
 from typing import Tuple, Dict, Union
 
-from pytorch_lightning import LightningModule
+from lightning.pytorch import LightningModule
 import torch
 import kornia
 
