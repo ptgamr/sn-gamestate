@@ -41,6 +41,8 @@ Not sure how to do this with `uv` yet....
 
 
 ```bash
+uv venv --python 3.9
+uv pip install -e .
 uv sync --frozen --no-install-package opencv-python-headless
 uv run --reinstall-package opencv-python
 uv run mim install mmcv==2.0.1

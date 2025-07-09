@@ -9,7 +9,7 @@ defaults:
   - dataset: local_video
   - eval: gs_hota
   - engine: video
-  - visualization: gamestate  # Save tracking results as a .mp4 video in the run directory specified below (sn-gamestate/outputs/...)
+  - visualization: gamestate # Save tracking results as a .mp4 video in the run directory specified below (sn-gamestate/outputs/...)
   - modules/bbox_detector: yolo_ultralytics
   - modules/reid: prtreid
   - modules/track: bpbreid_strong_sort
@@ -22,8 +22,10 @@ defaults:
   # - modules/team_side: mean_position
   # - modules/tracklet_agg: voting_role_jn
 
-  - modules/pitch : nbjw_calib
-  - modules/calibration: nbjw_calib
+  # - modules/pitch : nbjw_calib
+  # - modules/calibration: nbjw_calib
+  - modules/pitch: tvcalib
+  - modules/calibration: tvcalib
   - _self_
 
 # Pipeline definition :
@@ -41,7 +43,6 @@ pipeline:
   # - team
   # - team_side
 
-
 # Experiment name
 experiment_name: "sn-gamestate"
 
@@ -56,13 +57,13 @@ use_wandb: False
 use_rich: True
 
 modules: # Allows module-specific batch_size and other configuration
-  bbox_detector: {batch_size: 8}
-  pose_bottomup: {batch_size: 8}
-  reid: {batch_size: 64}
-  track: {batch_size: 64}
-  pitch: {batch_size: 1}
-  calibration: {batch_size: 1}
-  jersey_number_detect: {batch_size: 8}
+  bbox_detector: { batch_size: 8 }
+  pose_bottomup: { batch_size: 8 }
+  reid: { batch_size: 64 }
+  track: { batch_size: 64 }
+  pitch: { batch_size: 1 }
+  calibration: { batch_size: 1 }
+  jersey_number_detect: { batch_size: 8 }
 
 # Flags
 test_tracking: True
@@ -74,7 +75,7 @@ dataset:
 
 engine:
   filename: "/home/ptgamr/work/sportcontract/vision/soccernet/sn-gamestate/data/bayerndortmund.mp4"
-  target_fps: 2  # Process every other frame for better performance
+  target_fps: 2 # Process every other frame for better performance
 
 # # Dataset
 # dataset:
@@ -88,13 +89,13 @@ engine:
 # Tracker state (save computation time by dumping tracking results on disk for later re-use)
 # Dump tracking results to a .pcklz file to save computation time on the next run. Have a look at TrackLab tutorials for more details.
 state:
-  save_file: "states/${experiment_name}.pklz"  # 'null' to disable saving. This is the save path for the tracker_state object that contains all modules outputs (bboxes, reid embeddings, jersey numbers, roles, teams, etc)
-  load_file: null  # 'null' to disable loading. Load a file that was saved with the 'state.save_file' option above. Don't forget to remove from the pipeline all modules that should not be run again, but loaded from the saved tracker state.
+  save_file: "states/${experiment_name}.pklz" # 'null' to disable saving. This is the save path for the tracker_state object that contains all modules outputs (bboxes, reid embeddings, jersey numbers, roles, teams, etc)
+  load_file: null # 'null' to disable loading. Load a file that was saved with the 'state.save_file' option above. Don't forget to remove from the pipeline all modules that should not be run again, but loaded from the saved tracker state.
 
 # Visualization
 visualization:
   cfg:
-    save_videos: True  # Save a .mp4 video on disk with the game state reconstruction output (see 'tracklab/tracklab/configs/visualization' for more options)
+    save_videos: True # Save a .mp4 video on disk with the game state reconstruction output (see 'tracklab/tracklab/configs/visualization' for more options)
 
 # configure Hydra to use the current working directory
 # and set up the output directory according to experiment_name

@@ -17,4 +17,4 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["sn_calibration_baseline", "tvcalib", "nbjw_calib"]
+include = ["sn_calibration_baseline", "tvcalib", "pnlcalib", "nbjw_calib"]
