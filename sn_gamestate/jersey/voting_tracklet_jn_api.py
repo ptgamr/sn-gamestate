@@ -11,7 +11,7 @@ log = logging.getLogger(__name__)
 
 
 class VotingTrackletJerseyNumber(VideoLevelModule):
-    input_columns = ["track_id", "jersey_number", "jn_confidence"]
+    input_columns = ["track_id", "jersey_number_detection", "jersey_number_confidence"]
     output_columns = ["jn_tracklet"]
 
     def __init__(self, cfg, device, tracking_dataset=None):

@@ -20,9 +20,11 @@ visualizers:
   pitch:
     _target_: sn_gamestate.visualization.Pitch
   players:
-    _target_: sn_gamestate.visualization.Player
+    _target_: sn_gamestate.visualization.CompletePlayerEllipse
   radar:
     _target_: sn_gamestate.visualization.Radar
+  tracking:
+    _target_: tracklab.visualization.TrackingLine
 
 # Color settings for visualization.
 colors:

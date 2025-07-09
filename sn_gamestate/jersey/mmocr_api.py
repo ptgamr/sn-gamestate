@@ -103,6 +103,8 @@ class MMOCR(DetectionLevelModule):
         detections['jersey_number_detection'] = jersey_number_detection
         detections['jersey_number_confidence'] = jersey_number_confidence
 
+
+        log.info('Jersey number detection: {} ({:.2f})'.format(jn, conf))
         return detections
 
     def run_mmocr_inference(self, images_np):

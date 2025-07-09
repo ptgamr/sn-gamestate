@@ -1,3 +1,7 @@
 _target_: tracklab.wrappers.MajorityVoteTracklet
 cfg:
   attributes: ["jersey_number", "role"]
+
+# _target_: sn_gamestate.jersey.voting_tracklet_jn_api.VotingTrackletJerseyNumber
+# cfg:
+#   attributes: []
