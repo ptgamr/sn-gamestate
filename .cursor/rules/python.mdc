@@ -1,0 +1,54 @@
+---
+description: Using python in Terminal
+globs:
+alwaysApply: true
+---
+
+This project using uv. When you want to run python in the terminal, use `uv run python`
+
+If you want to add package, also do it via `uv pip interface`:
+
+### The pip interface
+Manually managing environments and packages — intended to be used in legacy workflows or cases where the high-level commands do not provide enough control.
+
+Creating virtual environments (replacing venv and virtualenv):
+
+uv venv: Create a new virtual environment.
+See the documentation on using environments for details.
+
+Managing packages in an environment (replacing pip and pipdeptree):
+
+uv pip install: Install packages into the current environment.
+uv pip show: Show details about an installed package.
+uv pip freeze: List installed packages and their versions.
+uv pip check: Check that the current environment has compatible packages.
+uv pip list: List installed packages.
+uv pip uninstall: Uninstall packages.
+uv pip tree: View the dependency tree for the environment.
+
+Example:
+
+To install a package into the virtual environment, e.g., Flask:
+
+```
+uv pip install flask
+```
+
+To install a package with optional dependencies enabled, e.g., Flask with the "dotenv" extra:
+
+```
+uv pip install "flask[dotenv]"
+```
+
+To install multiple packages, e.g., Flask and Ruff:
+
+```
+uv pip install flask ruff
+```
+
+To install a package with a constraint, e.g., Ruff v0.2.0 or newer:
+
+```
+uv pip install 'ruff>=0.2.0'
+```
+
